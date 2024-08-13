@@ -1,7 +1,31 @@
 import React from "react";
-import { FaGoogle } from "react-icons/fa6";
-import { useTheme } from "@/components/Theme/ThemeProvider";
-import {signIn, useSession} from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
+import {useTheme} from "@/components/Theme/ThemeProvider";
+
+const Dashboard: React.FC = () => {
+
+    const {status, data} = useSession();
+
+
+    if ( status === 'loading' ) return <div><span className="loading loading-spinner loading-lg"></span></div>
+
+    if (status !== 'authenticated' &&  typeof window !== 'undefined') {
+    }
+
+    return (
+        <div>
+            <Navbar/>
+            <div className="divider h-0 p-0 mt-0 mb-0"></div>
+            <div className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center">
+                <h1 className="text-3xl font-bold">Dashboard</h1>
+                <p>Welcome {data?.user?.name}</p>
+            </div>
+        </div>
+    );
+};
+
+export default Dashboard;
+
 
 const Navbar: React.FC = () => {
     const { theme, updateTheme } = useTheme();
@@ -50,44 +74,10 @@ const Navbar: React.FC = () => {
                 </a>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-primary rounded-full" onClick={() => signIn("google" ,{callbackUrl: '/dashboard', redirect: true})}>
-                    Sign In <FaGoogle />
+                <button className="btn btn-primary rounded-full" onClick={() => signOut({callbackUrl: '/', redirect: true})}>
+                    Logout
                 </button>
             </div>
         </div>
     );
 };
-
-export default function Home() {
-
-
-    const { status} = useSession();
-
-    if (status === "loading") return <div><span className="loading loading-spinner loading-lg"></span></div>;
-
-
-    if (status === "authenticated") {
-        window.location.href = "/dashboard";
-    }
-
-    return (
-        <>
-            <Navbar/>
-            <div className="divider h-0 p-0 mt-0 mb-0"></div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="text-center hero-content">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Textualize</h1>
-                        <p className="mb-5">
-                            Textualize is a tool that helps you convert your handwriting into digital text.
-                        </p>
-                        <button className="btn btn-primary rounded-full"
-                                onClick={() => signIn("google", {callbackUrl: '/dashboard', redirect: true})}>
-                            Get Started
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-}
