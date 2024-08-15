@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from "@/lib/mongodb";
+import dbConnect from "@/lib/mongo/mongodb";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await dbConnect();

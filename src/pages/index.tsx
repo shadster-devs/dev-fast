@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                 </a>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-primary rounded-full" onClick={() => signIn("google" ,{callbackUrl: '/dashboard', redirect: true})}>
+                <button className="btn btn-ghost rounded-full text-primary" onClick={() => signIn("google" ,{callbackUrl: '/dashboard', redirect: true})}>
                     Sign In <FaGoogle />
                 </button>
             </div>
@@ -81,7 +81,7 @@ export default function Home() {
                         <p className="mb-5">
                             Textualize is a tool that helps you convert your handwriting into digital text.
                         </p>
-                        <button className="btn btn-primary rounded-full"
+                        <button className="btn btn-primary"
                                 onClick={() => signIn("google", {callbackUrl: '/dashboard', redirect: true})}>
                             Get Started
                         </button>

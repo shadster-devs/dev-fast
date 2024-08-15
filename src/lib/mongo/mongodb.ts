@@ -1,6 +1,7 @@
 import mongoose, { Connection } from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_DB = process.env.MONGODB_DB!;
 
 if (!MONGODB_URI) {
     throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
@@ -16,7 +17,7 @@ async function dbConnect() {
     }
 
     try {
-        const connection = await mongoose.connect(MONGODB_URI, {
+        const connection = await mongoose.connect(`${MONGODB_URI}/${MONGODB_DB}`, {
             bufferCommands: false,
         });
         cachedConnection = connection.connection || null;

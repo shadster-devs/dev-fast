@@ -6,7 +6,7 @@ interface ThemeContextProps {
     supportedThemes: typeof supportedThemes;
 }
 
-const supportedThemes = ['winter', 'dim', 'pastel', 'luxury'] as const;
+export const supportedThemes = ['winter', 'dim'] as const;
 
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -21,19 +21,10 @@ export const useTheme = () => {
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
-    const [theme, setTheme] = useState<string>(() => {
-        if (typeof window !== 'undefined') {
-            const storedTheme = localStorage.getItem('theme');
-            return storedTheme && supportedThemes.includes(storedTheme as any) ? storedTheme : supportedThemes[0];
-        }
-        return supportedThemes[0];
-    });
+    const [theme, setTheme] = useState<string>(supportedThemes[0]);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
             document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
     }, [theme]);
 
     const updateTheme = (newTheme: string) => {
