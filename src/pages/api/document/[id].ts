@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const document = await Document.find({_id: id, createdBy: parsedEmail});
 
                 if (!document) {
-                    return res.status(404).json({message: 'Document not found'});
+                    return res.status(404).json({message: 'DocumentForm not found'});
                 }
 
                 return res.status(200).json(document);
@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const {id} = req.query;
                 const document = await Document.findOneAndDelete({_id: id, createdBy: parsedEmail});
                 if (!document) {
-                    return res.status(404).json({message: 'Document not found'});
+                    return res.status(404).json({message: 'DocumentForm not found'});
                 }
                 res.status(200).json(document);
             } catch (error) {

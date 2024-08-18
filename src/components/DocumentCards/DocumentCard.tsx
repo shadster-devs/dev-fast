@@ -57,7 +57,7 @@ const DocumentCard: React.FC<DocumentCardProps> = (props) => {
         <div className="card bg-base-100 sm:w-52 md:w-64 lg:w-80 xl:w-96 shadow-xl overflow-hidden">
             <div className="card-body flex flex-col">
                 <h2 className="card-title">
-                    <a onClick={()=>
+                    <a className="cursor-pointer link text-primary" onClick={()=>
                         router.push(`/document/${mdDocument._id}`)
                     }>{mdDocument.title}</a>
                 </h2>

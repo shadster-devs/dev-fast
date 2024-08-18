@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
                 const document = await Document.create({title, content, createdBy: parsedEmail});
                 if (!document) {
-                    return res.status(404).json({message: 'Document not found'});
+                    return res.status(404).json({message: 'DocumentForm not found'});
                 }
                 res.status(201).json(document);
             } catch (error) {

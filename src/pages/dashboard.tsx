@@ -2,8 +2,6 @@ import React, {useEffect} from "react";
 import {useSession} from "next-auth/react";
 import {useTheme} from "@/components/Theme/ThemeProvider";
 import DocumentsCardView from "@/components/DocumentCards/DocumentsCardView";
-import { Document } from "@/utils/types";
-import Navbar from "@/components/NavBar/NavBar";
 import {useDocuments} from "@/components/DocumentCards/DocumentProvider";
 
 
@@ -16,9 +14,6 @@ const Dashboard: React.FC = () => {
     const [isLoading, setIsLoading] = React.useState(true);
 
     const {fetchAllDocuments}= useDocuments();
-
-
-
 
     useEffect(() => {
         if (status === "authenticated") {
@@ -40,7 +35,6 @@ const Dashboard: React.FC = () => {
                         }
                     } else if (userResponse.ok) {
                         const userData = await userResponse.json();
-                        console.log("User data:", userData);
                     } else {
                         console.error("Failed to fetch user data");
                     }
@@ -65,7 +59,6 @@ const Dashboard: React.FC = () => {
                         }
                     }else if (response.ok) {
                         const settings = await response.json();
-                        console.log("User settings:", settings);
                         updateTheme(settings.theme);
                     }
                 } catch (error) {
@@ -88,8 +81,6 @@ const Dashboard: React.FC = () => {
 
     return (
         <div>
-            <Navbar/>
-            <div className="divider h-0 p-0 mt-0 mb-0"></div>
             <div className="hero min-h-screen bg-base-200 flex flex-col p-10 ">
                 <DocumentsCardView />
             </div>

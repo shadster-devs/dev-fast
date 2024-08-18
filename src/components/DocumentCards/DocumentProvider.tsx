@@ -43,7 +43,6 @@ const DocumentProvider: React.FC<DocumentProviderProps> = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 setDocuments(data);
-                addToast('Documents fetched successfully', 'success');
             }
         } catch (error) {
             addToast('Failed to fetch documents!' , 'error');
@@ -66,7 +65,7 @@ const DocumentProvider: React.FC<DocumentProviderProps> = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 setDocuments([...documents, data]);
-                router.push(`/document/${data._id}`);
+                router.push(`/dashboard`);
                 addToast('Document created successfully', 'success');
             }
         } catch (error) {
@@ -89,6 +88,7 @@ const DocumentProvider: React.FC<DocumentProviderProps> = ({ children }) => {
                     document._id === data._id ? data : document
                 );
                 setDocuments(updatedDocuments);
+                router.push(`/dashboard`);
                 addToast('Document updated successfully', 'success');
             }
         } catch (error) {

@@ -1,6 +1,6 @@
 import DocumentCard from "@/components/DocumentCards/DocumentCard";
 import React, {useEffect} from "react";
-import CreateDocument from "@/components/DocumentCards/CreateDocument";
+import CreateDocumentCard from "@/components/DocumentCards/CreateDocumentCard";
 import { Document } from "@/utils/types";
 import {useToast} from "@/components/Toast/ToastProvider";
 import {useDocuments} from "@/components/DocumentCards/DocumentProvider";
@@ -35,7 +35,7 @@ const DocumentsCardView: React.FC<DocumentCardViewProps> = (props) => {
                 <div key={index} className={"flex flex-col gap-4"}>
                     <h1 className="text-xl font-bold">{group.date}</h1>
                     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {group.date=== new Date().toDateString() && <CreateDocument/>}
+                        {group.date=== new Date().toDateString() && <CreateDocumentCard/>}
                         {group.documents.map((document, index) => (
                             <DocumentCard key={index} index={index} mdDocument={document}/>
                         ))}

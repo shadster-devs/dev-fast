@@ -6,6 +6,7 @@ import {ToastProvider} from "@/components/Toast/ToastProvider";
 import Toast from "@/components/Toast/Toast";
 import {ModalProvider} from "@/components/Modal/ModalProvider";
 import DocumentProvider from "@/components/DocumentCards/DocumentProvider";
+import NavBar from "@/components/NavBar/NavBar";
 
 export default function App({ Component, pageProps }: AppProps) {
   return(
@@ -14,7 +15,8 @@ export default function App({ Component, pageProps }: AppProps) {
               <ToastProvider>
                   <ModalProvider>
                       <DocumentProvider>
-                          <Component {...pageProps} />
+                              <NavBar/>
+                              <Component {...pageProps} />
                       </DocumentProvider>
                   </ModalProvider>
               </ToastProvider>

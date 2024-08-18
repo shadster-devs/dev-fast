@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 interface CreateDocumentProps {
 }
 
-const CreateDocument: React.FC<CreateDocumentProps> = (props) => {
+const CreateDocumentCard: React.FC<CreateDocumentProps> = (props) => {
 
     const router = useRouter();
 
@@ -23,4 +23,4 @@ const CreateDocument: React.FC<CreateDocumentProps> = (props) => {
     );
 }
 
-export default CreateDocument;
+export default CreateDocumentCard;
