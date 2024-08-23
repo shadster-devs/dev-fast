@@ -63,7 +63,7 @@ const SignedInNavbar: React.FC = () => {
         <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <a className="btn btn-ghost text-xl" href={"/dashboard"}>
-                    Textualize
+                    mdEditor
                 </a>
             </div>
             <div className="navbar-center"></div>
@@ -153,7 +153,7 @@ const SignedOutNavbar: React.FC = () => {
             </div>
             <div className="navbar-center">
                 <a className="btn btn-ghost text-xl" href={"/"}>
-                    Textualize
+                    mdEditor
                 </a>
             </div>
             <div className="navbar-end">

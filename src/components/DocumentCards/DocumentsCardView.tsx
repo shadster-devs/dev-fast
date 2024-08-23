@@ -33,7 +33,7 @@ const DocumentsCardView: React.FC<DocumentCardViewProps> = (props) => {
         <div className="flex flex-col gap-16">
             {groupedDocuments.map((group, index) => (
                 <div key={index} className={"flex flex-col gap-4"}>
-                    <h1 className="text-xl font-bold">{group.date}</h1>
+                    <h1 className="text-xl font-bold">{ group.date === new Date().toDateString() ? 'Today' : group.date }</h1>
                     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {group.date=== new Date().toDateString() && <CreateDocumentCard/>}
                         {group.documents.map((document, index) => (

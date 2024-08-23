@@ -3,6 +3,7 @@ import {useSession} from "next-auth/react";
 import {useTheme} from "@/components/Theme/ThemeProvider";
 import DocumentsCardView from "@/components/DocumentCards/DocumentsCardView";
 import {useDocuments} from "@/components/DocumentCards/DocumentProvider";
+import Loader from "@/components/Loader/Loader";
 
 
 
@@ -77,7 +78,9 @@ const Dashboard: React.FC = () => {
 
 
 
-    if ( status === 'loading' || isLoading ) return <div><span className="loading loading-spinner loading-lg"></span></div>
+
+
+    if ( status === 'loading' || isLoading ) return <Loader/>
 
     return (
         <div>

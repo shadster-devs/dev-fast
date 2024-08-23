@@ -12,16 +12,19 @@ interface ModalProps {
     hideCloseButton?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({
-                                         title,
-                                         children,
-                                         onConfirm,
-                                         onCancel,
-                                         confirmText = "Confirm",
-                                         cancelText = "Cancel",
-                                         isOpen,
-                                         hideCloseButton = false,
-                                     }) => {
+const Modal: React.FC<ModalProps> = (props) => {
+
+    const {
+        title,
+        children,
+        onConfirm,
+        onCancel,
+        confirmText = "Confirm",
+        cancelText = "Cancel",
+        isOpen,
+        hideCloseButton = false,
+    } = props;
+
     const closeButtonRef = useRef<HTMLButtonElement>(null!);
 
     useEffect(() => {

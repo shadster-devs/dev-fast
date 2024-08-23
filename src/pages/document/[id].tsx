@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import { Document } from "@/utils/types";
 import {useDocuments} from "@/components/DocumentCards/DocumentProvider";
 import DocumentForm from "@/components/DocumentForm/DocumentForm";
+import {useSession} from "next-auth/react";
+import SignUpModal from "@/components/SignUpModal/SignUpModal";
 
 const ViewEditDocument = () => {
     const router = useRouter();
     const {addToast} = useToast();
     const {getDocument, updateDocument} = useDocuments();
+    const { data, status } = useSession();
     const { id } = router.query;
 
     const [mdDocument, setMdDocument] = useState<Document>({
