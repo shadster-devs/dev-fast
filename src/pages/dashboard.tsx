@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import {useSession} from "next-auth/react";
 import {useTheme} from "@/components/Theme/ThemeProvider";
-import DocumentsCardView from "@/components/DocumentCards/DocumentsCardView";
-import {useDocuments} from "@/components/DocumentCards/DocumentProvider";
 import Loader from "@/components/Loader/Loader";
 
 
@@ -14,7 +12,6 @@ const Dashboard: React.FC = () => {
 
     const [isLoading, setIsLoading] = React.useState(true);
 
-    const {fetchAllDocuments}= useDocuments();
 
     useEffect(() => {
         if (status === "authenticated") {
@@ -69,7 +66,9 @@ const Dashboard: React.FC = () => {
 
 
             fetchAndUpdateUser().then( () => {
-                fetchUserSettings().then(() => {fetchAllDocuments()})});
+                fetchUserSettings().then(() => {
+
+                })});
 
             setIsLoading(false);
         }
@@ -85,7 +84,7 @@ const Dashboard: React.FC = () => {
     return (
         <div>
             <div className="hero min-h-screen bg-base-200 flex flex-col p-10 ">
-                <DocumentsCardView />
+
             </div>
         </div>
     );
